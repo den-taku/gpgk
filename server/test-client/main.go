@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:5959", grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial("localhost:5859", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -18,7 +18,11 @@ func main() {
 
 	ctx, cancel := context.WithTimeout(context.Background(), 20 * time.Second)
 	defer cancel()
-	r, err := c.Execute(ctx, &pb.ExecuteRequest{Code: "fn main() {println!(\"Hello!!\")}"})
+	program := `fn main() {
+		println!("Hello, DenTaku!")
+	}
+	`
+	r, err := c.Execute(ctx, &pb.ExecuteRequest{Code: program})
 	if err != nil {
 		log.Fatal(err)
 	}

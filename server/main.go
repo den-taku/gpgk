@@ -91,7 +91,7 @@ func main() {
 	log.Printf("create log: %v", out)
 
 	// wake up server
-	lis, err := net.Listen("tcp", ":5959")
+	lis, err := net.Listen("tcp", ":5859")
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}

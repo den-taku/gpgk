@@ -9,4 +9,4 @@ gRPC between C++ client and golang server on k8s
 
 ### test client
 
-`cd test-cleint; go run .`
+`cd server/test-cleint; go run .`
