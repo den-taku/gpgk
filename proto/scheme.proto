@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package gpgk;
+
+option go_package = "server/grpc";
+
+service GpgkService {
+    rpc Execute(ExecuteRequest) returns (ExecuteResponse);
+}
+
+message ExecuteRequest {
+    string code = 1;
+}
+
+message ExecuteResponse {
+    string stdout = 1;
+    string stderr = 2;
+}
+
+// for my notes:
+// cd proto; export PATH="$PATH:$(go env GOPATH)/bin";
+// protoc --go_out=../server/grpc --go_opt=paths=source_relative --go-grpc_out=../server/grpc --go-grpc_opt=paths=source_relative scheme.proto
