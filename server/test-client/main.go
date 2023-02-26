@@ -18,10 +18,11 @@ func main() {
 
 	ctx, cancel := context.WithTimeout(context.Background(), 20 * time.Second)
 	defer cancel()
-	program := `fn main() {
-		println!("Hello, DenTaku!")
-	}
-	`
+	program := `// this code is sent from test-client
+fn main() {
+	println!("Hello, DenTaku!")
+}
+`
 	r, err := c.Execute(ctx, &pb.ExecuteRequest{Code: program})
 	if err != nil {
 		log.Fatal(err)
